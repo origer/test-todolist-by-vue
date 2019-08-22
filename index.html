@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Test</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://pagecdn.io/lib/semantic-ui/2.4.1/semantic.min.css" />
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <div class="ui container text">
+
+    <div class="ui inverted segment fixed top">
+      <div class="ui inverted secondary pointing menu">
+        <a class="item active">ToDo List</a>
+      </div>
+    </div>
+
+    <div class="ui form">
+
+      <div class="inline fields">
+        <div class="twelve wide field">
+          <input type="text" v-model="newItem"></input>
+        </div>
+        <div class="four wide field">
+          <button class="ui button fluid primary" @click="addItem">add</button>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="ui segment">
+
+      <div class="ui form">
+
+        <div class="inline fields" v-for="(todo, index) in todos" v-cloak>
+          <div class="fifteen wide field">
+            <div class="ui checkbox">
+              <input type="checkbox" v-model="todo.isDone">
+              <label v-bind:class="{done: todo.isDone}">{{ todo.item }}</label>
+            </div>
+          </div>
+          <div class="one wide field">
+            <button class="ui button mini compact basic icon right floated" @click="delItem(index)">
+              <i class="icon close"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+  </div>
+
+</div>
+
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+  <script src="https://pagecdn.io/lib/semantic-ui/2.4.1/semantic.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./vue.js"></script>
+
+</body>
+</html>
